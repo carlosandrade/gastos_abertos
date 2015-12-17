@@ -119,7 +119,7 @@ grouped_fields = { 'category_code': fields.String
 
 
 @ns.route('/grouped')
-class GroupedRevenueApi(restful.Resource):
+class GroupedRevenueApi(Resource):
 
     #@with_csv('receita.csv')
     @api.doc(parser=grouped_revenue_parser)
