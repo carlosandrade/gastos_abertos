@@ -117,8 +117,13 @@ grouped_fields = { 'category_code': fields.String
                  , 'Total Predicted': fields.Float()
                  , 'Total Outcome': fields.Float() }
 
+
+@ns.route('/grouped')
 class GroupedRevenueApi(restful.Resource):
 
+    #@with_csv('receita.csv')
+    @api.doc(parser=grouped_revenue_parser)
+    #@api.marshal_with(revenues_model)
     def get(self):
         args = grouped_revenue_parser.parse_args()
         years = args['years']
@@ -305,7 +310,7 @@ class RevenueInfoApi(Resource):
 
 
 #receita_api.add_resource(RevenueApi, '/receita/list')
-receita_api.add_resource(GroupedRevenueApi, '/receita/grouped')
+#receita_api.add_resource(GroupedRevenueApi, '/receita/grouped')
 receita_api.add_resource(RevenueTotalApi, '/receita/total')
 receita_api.add_resource(RevenueCodeApi, '/receita/code')
 #receita_api.add_resource(RevenueSeriesApi, '/receita/series')
